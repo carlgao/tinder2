@@ -109,6 +109,15 @@
   function noClicked() {
     displayNextPhoto();
   }
+  
+  function doneClicked() {
+    document.getElementById("status").innerHTML = "";
+    for (var i = 0; i < window.yesPhotos.length; i++) {
+      var x = document.createElement("img");
+      x.setAttribute("src", window.yesPhotos[i]);
+      document.getElementById("status").appendChild(x);
+    }
+  }
 </script>
 
 <!--
@@ -122,6 +131,7 @@
 
 <button id="yesButton" onclick="yesClicked();">YES!!</button>
 <button id="noButton" onclick="noClicked();">NO!!!!</button>
+<button id="doneButton" onclick="doneClicked();">Done</button>
 <div id="status">
 </div>
 
