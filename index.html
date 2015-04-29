@@ -97,12 +97,12 @@
   
   function displayNextPhoto() {
     document.getElementById("status").innerHTML = 
-    '<img src="' + window.photos[window.photoIndex].source + '">';
+    '<img id="photo" src="' + window.photos[window.photoIndex].source + '">';
     window.photoIndex++;
   }
   
   function yesClicked() {
-    window.yesPhotos.push(document.getElementById("status").src);
+    window.yesPhotos.push(document.getElementById("photo").src);
     displayNextPhoto();
   }
   
