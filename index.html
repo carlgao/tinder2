@@ -83,6 +83,19 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+    
+    FB.api(
+      '/me/photos',
+      function(response) {
+        window.photos = response.data;
+        displayNextPhoto();
+      }
+      )
+  }
+  
+  function displayNextPhoto() {
+    document.getElementById("status").innerHTML = 
+    '<img src="' + window.photos[0] + '">';
   }
 </script>
 
