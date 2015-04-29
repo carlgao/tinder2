@@ -88,6 +88,8 @@
       '/me/photos',
       function(response) {
         window.photos = response.data;
+        window.yesPhotos = [];
+        window.photoIndex = 0;
         displayNextPhoto();
       }
       )
@@ -95,7 +97,17 @@
   
   function displayNextPhoto() {
     document.getElementById("status").innerHTML = 
-    '<img src="' + window.photos[0] + '">';
+    '<img src="' + window.photos[window.photoIndex].source + '">';
+    window.photoIndex++;
+  }
+  
+  function yesClicked() {
+    window.yesPhotos.push(document.getElementById("status").src);
+    displayNextPhoto();
+  }
+  
+  function noClicked() {
+    displayNextPhoto();
   }
 </script>
 
@@ -108,6 +120,8 @@
 <fb:login-button scope="public_profile,email,user_photos" onlogin="checkLoginState();">
 </fb:login-button>
 
+<button id="yesButton" onclick="yesClicked();"></button>
+<button id="noButton" onclick="noClicked();"></button>
 <div id="status">
 </div>
 
